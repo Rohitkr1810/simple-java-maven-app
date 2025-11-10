@@ -4,6 +4,11 @@ pipeline
     environment{
         NAME = "rohit"
     }
+    parameters {
+        string defaultValue: 'Rohit', name: 'FirstN'
+        string defaultValue: 'Kalyan', name: 'SecondN'
+    }
+
     tools {
         git 'Default'
         maven 'mymaven'
@@ -12,7 +17,8 @@ pipeline
         stage('build'){
             steps{
                 sh 'mvn clean package'
-                echo "hello $NAME"
+                echo "My first name is ${params.FirstN}"
+                echo "My Second name is ${params.SecondN}"
             }
             post {
                 success {
