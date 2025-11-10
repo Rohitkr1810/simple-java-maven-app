@@ -1,6 +1,9 @@
 pipeline
 {
     agent{label 'dev-server'}
+    environment{
+        NAME = "rohit"
+    }
     tools {
         git 'Default'
         maven 'mymaven'
@@ -9,6 +12,7 @@ pipeline
         stage('build'){
             steps{
                 sh 'mvn clean package'
+                echo "hello $NAME"
             }
             post {
                 success {
