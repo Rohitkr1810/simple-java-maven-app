@@ -1,21 +1,18 @@
 pipeline
 {
-    agent any
+    agent{label 'dev-server'}
     stages{
         stage('build'){
             steps{
-                echo "This is build stage"
+                sh 'mvn clean package'
             }
         }
-        stage('test'){
-            steps{
-                echo "This is test stage"
+        post {
+            success {
+                // One or more steps need to be included within each condition's block.
+                archiveArtificats artifacts: '**/target/*.war'
             }
         }
-        stage('Steps'){
-            steps{
-                echo "This is deploy stage"
-            }
-        }
+
     }
 }
