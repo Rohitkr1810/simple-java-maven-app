@@ -20,6 +20,16 @@ pipeline
                 echo "My first name is ${params.FirstN}"
                 echo "My Second name is ${params.SecondN}"
             }
+        }
+        stage('test'){
+            parallel{
+                stage('testA'){
+                    echo "This is Test A"
+                }
+                stage('testB'){
+                    echo "This is Test B"
+                }
+            }
             post {
                 success {
                     // One or more steps need to be included within each condition's block.
