@@ -1,6 +1,10 @@
 pipeline
 {
     agent{label 'dev-server'}
+    tools {
+        git 'Default'
+        maven 'mymaven'
+    }
     stages{
         stage('build'){
             steps{
