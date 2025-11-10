@@ -13,7 +13,7 @@ pipeline
             post {
                 success {
                     // One or more steps need to be included within each condition's block.
-                    archiveArtifcats artifacts: '**/target/*.war'
+                    archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
         }
