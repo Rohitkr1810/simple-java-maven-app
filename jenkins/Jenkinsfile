@@ -6,13 +6,12 @@ pipeline
             steps{
                 sh 'mvn clean package'
             }
-        }
-        post {
-            success {
-                // One or more steps need to be included within each condition's block.
-                archiveArtificats artifacts: '**/target/*.war'
+            post {
+                success {
+                    // One or more steps need to be included within each condition's block.
+                    archiveArtificats artifacts: '**/target/*.war'
+                }
             }
         }
-
     }
 }
